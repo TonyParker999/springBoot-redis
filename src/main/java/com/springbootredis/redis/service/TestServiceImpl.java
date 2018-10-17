@@ -17,7 +17,7 @@ public class TestServiceImpl  {
     @Resource
     private TestDao testDao;
 
-
+    @Cacheable(value ="springBoot-redis-userListCach")
     public List<Map<String,Object>> getUsers(Map<String, Object> map) {
         return testDao.getUsers(map);
     }
@@ -35,7 +35,7 @@ public class TestServiceImpl  {
         return user.getId();
     }
 
-    @Cacheable(key="#id",value ="user")
+    @Cacheable(key="#id",value ="returnUser")
     public User getUserById(int id){
         User user = testDao.getUserById(id);
         return user;

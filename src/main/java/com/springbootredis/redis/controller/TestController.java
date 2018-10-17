@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,13 +22,23 @@ public class TestController {
     TestServiceImpl testService;
 
     @RequestMapping("/test")
-    public Map<String,Object> Test(){
+    public Map<String,Object> Test(HttpServletRequest request){
         Map<String,Object> map=new HashMap<String,Object>();
+        request.getSession().setAttribute("userName","Tony parker");
+        map.put("sessionId", request.getSession().getId());
         map.put("url",url);
         return map;
     }
 
-    @RequestMapping("/get")
+    @RequestMapping("/getSession")
+    public Map<String,Object> getSession(HttpServletRequest request){
+        Map<String,Object> map=new HashMap<String,Object>();
+        String userName = (String)request.getSession().getAttribute("userName");
+        map.put("userName",userName);
+        return map;
+    }
+
+    @RequestMapping("/getUserList")
     public Map<String,Object> get(){
         List<Map<String,Object>> users = testService.getUsers(new HashMap<>());
         Map<String,Object> dataMap=new HashMap<>();
