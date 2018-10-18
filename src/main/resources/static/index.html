@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+<body>
+    <p name="local"></p>
+    <p name="ip"></p>
+    <p name="port"></p>
+</body>
+
+<script>
+    $.ajax({
+        url: "/getServiceMsg",
+        async: false,
+        success(data){
+            console.log(data);
+            $("[name='local']").html(data.local);
+            $("[name='ip']").html(data.localAddr);
+            $("[name='port']").html(data.localPort);
+        }
+    })
+</script>
+</html>
