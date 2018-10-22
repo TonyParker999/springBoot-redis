@@ -17,12 +17,12 @@ public class TestServiceImpl  {
     @Resource
     private TestDao testDao;
 
-    @Cacheable(value ="springBoot-redis-userListCach")
+//    @Cacheable(value ="springBoot-redis-userListCach")
     public List<Map<String,Object>> getUsers(Map<String, Object> map) {
         return testDao.getUsers(map);
     }
 
-//    @Transactional
+    @Transactional
     public void update(Map<String, Object> map) {
         testDao.updateSpecialReview(map);
         System.out.println(1/0);

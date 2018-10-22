@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -40,6 +42,7 @@ public class LoginController {
 
     @RequestMapping("/login")
     public void login(HttpServletRequest request,HttpServletResponse response){
+        List l=new ArrayList<>();
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         User user = userService.getUserByName(userName);

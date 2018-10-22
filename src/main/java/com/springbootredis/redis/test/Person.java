@@ -1,0 +1,6 @@
+package com.springbootredis.redis.test;
+
+public interface Person {
+    //上交班费
+    void giveMoney();
+}
