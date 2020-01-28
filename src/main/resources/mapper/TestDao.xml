@@ -5,8 +5,8 @@
     <!--<cache />-->
 
     <!--不刷新二级缓存 flushCache="false"-->
-    <select id="getUsers" resultType="map" flushCache="false">
-        select * from sys_user
+    <select id="getUsers" resultType="map" >
+        select 111,u.* from sys_user u
     </select>
 
     <update id="updateSpecialReview" parameterType="map">

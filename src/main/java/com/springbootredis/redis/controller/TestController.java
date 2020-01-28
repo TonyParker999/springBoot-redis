@@ -2,6 +2,7 @@ package com.springbootredis.redis.controller;
 
 import com.springbootredis.redis.model.User;
 import com.springbootredis.redis.service.TestServiceImpl;
+import com.springbootredis.redis.utils.SpringBeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class TestController {
 
     @RequestMapping("/test")
     public Map<String,Object> Test(HttpServletRequest request){
+
         Map<String,Object> map=new HashMap<String,Object>();
         request.getSession().setAttribute("userName","Tony parker");
         map.put("sessionId", request.getSession().getId());
@@ -43,6 +45,7 @@ public class TestController {
         List<Map<String,Object>> users = testService.getUsers(new HashMap<>());
         Map<String,Object> dataMap=new HashMap<>();
         dataMap.put("users",users);
+        dataMap.put("aaa","121");
         return dataMap;
     }
 
